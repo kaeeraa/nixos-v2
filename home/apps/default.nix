@@ -9,5 +9,6 @@
     ./direnv.nix
     ./lutris.nix
     ./alacritty.nix
+    ./git.nix
   ];
 }
