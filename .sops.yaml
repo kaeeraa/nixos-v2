@@ -1,0 +1,8 @@
+keys:
+  - &github age1tag1qwh82vlvm3s32xamucv6kxdctqh603suagxw7ekrktq3rmrp37d6yet4myq
+
+creation_rules:
+  - path_regex: secrets.yaml
+    key_groups:
+      - age:
+          - *github
