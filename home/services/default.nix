@@ -1,3 +1,3 @@
 {...}: { 
-  imports = [ ./ssh-agent.nix ];
+  imports = [ ./gpg-agent.nix ./ssh-agent.nix];
 }

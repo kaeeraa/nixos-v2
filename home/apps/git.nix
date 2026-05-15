@@ -22,6 +22,8 @@
       pull.rebase = true;
       push.autoSetupRemote = true;
 
+      format.signoff = true;
+
       core = {
         editor = "nvim";
         pager = "delta";

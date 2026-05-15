@@ -12,6 +12,7 @@
     ./openssh.nix
     ./tpm.nix
     ./hardening.nix
+    ./disko.nix
 
     ./apps
     ./services

@@ -22,6 +22,11 @@ in {
         owner = "kaeeraa";
         mode = "0600";
       };
+      alpha-vds = {
+        path = "/home/kaeeraa/.ssh/alpha-vds.ed25519";
+        owner = "kaeeraa";
+        mode = "0600";
+      };
     };
   };
 }

@@ -1,5 +1,6 @@
 {
   ayugram-desktop,
+  freesmlauncher,
   system,
   pkgs,
   ...
@@ -21,6 +22,7 @@
 
   home.packages = with pkgs; [
     ayugram-desktop.packages.${system}.default
+    freesmlauncher.packages.${system}.default
 
     yandex-music
 

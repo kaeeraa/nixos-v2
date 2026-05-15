@@ -47,7 +47,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     freesmlauncher = {
-      url = "github:FreesmTeam/FreesmLauncher";
+      url = "github:kaeeraa/FreesmLauncher";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -65,6 +65,7 @@
     disko,
     impermanence,
     ayugram-desktop,
+    freesmlauncher,
     ...
   }: let
     system = "x86_64-linux";
@@ -84,7 +85,6 @@
         disko.nixosModules.disko
         impermanence.nixosModules.default
 
-        ./disko.nix
         ./packages
         ./secrets
         ./hosts/desktop/default.nix
@@ -101,6 +101,7 @@
               firefox-addons
               mangowm
               ayugram-desktop
+              freesmlauncher
               ;
           };
           home-manager.users.kaeeraa = import ./home/default.nix;

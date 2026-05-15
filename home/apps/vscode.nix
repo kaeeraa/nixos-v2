@@ -30,6 +30,8 @@
         charliermarsh.ruff
         usernamehw.errorlens
         christian-kohler.path-intellisense
+        yzhang.markdown-all-in-one
+        ms-vscode.cmake-tools
       ];
 
       userSettings = {

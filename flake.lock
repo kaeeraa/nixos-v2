@@ -80,22 +80,6 @@
         "type": "github"
       }
     },
-    "flake-compat_2": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1767039857,
-        "narHash": "sha256-vNpUSpF5Nuw8xvDLj2KCwwksIbjua2LZCqhV1LNRDns=",
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "rev": "5edf11c44bc78a0d334f6334cdaf7d60d732daab",
-        "type": "github"
-      },
-      "original": {
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "type": "github"
-      }
-    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
@@ -155,7 +139,6 @@
     },
     "freesmlauncher": {
       "inputs": {
-        "flake-compat": "flake-compat_2",
         "libnbtplusplus": "libnbtplusplus",
         "nix-filter": "nix-filter",
         "nixpkgs": [
@@ -163,15 +146,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1778710053,
-        "narHash": "sha256-89EMao6He4RBWqHAq+AqEBKoV0BjXG5nNmsqqdjhIg0=",
-        "owner": "FreesmTeam",
+        "lastModified": 1778838256,
+        "narHash": "sha256-FYV5xHTfGA61v2cSiXR9J7cbLNLJP0alh+Xo7nOG2aw=",
+        "owner": "kaeeraa",
         "repo": "FreesmLauncher",
-        "rev": "f02b7e65650fc9f7187b5464945e42ff82ad5ac6",
+        "rev": "d8ea3aacbb0c8121b2c8a9370af18d0ea50d8aed",
         "type": "github"
       },
       "original": {
-        "owner": "FreesmTeam",
+        "owner": "kaeeraa",
         "repo": "FreesmLauncher",
         "type": "github"
       }
