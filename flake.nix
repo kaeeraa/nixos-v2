@@ -85,7 +85,7 @@
         disko.nixosModules.disko
         impermanence.nixosModules.default
 
-        ./packages
+        ./custom
         ./secrets
         ./hosts/desktop/default.nix
         {

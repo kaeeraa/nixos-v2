@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  config,
   ...
 }: {
   environment.systemPackages = [pkgs.sbctl];
@@ -74,7 +75,7 @@
       install video1394 /bin/false
     '';
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_zen;
     blacklistedKernelModules = [
       # Obscure networking protocols
       "dccp" # Datagram Congestion Control Protocol

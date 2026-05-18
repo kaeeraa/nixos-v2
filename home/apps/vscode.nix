@@ -6,20 +6,20 @@
 }: {
   programs.vscode = {
     enable = true;
-    mutableExtensionsDir = false;
+    mutableExtensionsDir = true;
 
     profiles.default = {
       extensions = with pkgs.vscode-extensions; [
         jdinhlife.gruvbox
         pkief.material-icon-theme
-
+      
         jnoortheen.nix-ide
         sumneko.lua
         ms-python.python
         ms-python.vscode-pylance
         mads-hartmann.bash-ide-vscode
         esbenp.prettier-vscode
-
+      
         editorconfig.editorconfig
         foxundermoon.shell-format
         mkhl.direnv
@@ -64,18 +64,16 @@
         "chat.disableAIFeatures" = true;
 
         "terminal.integrated.defaultProfile.linux" = "zsh";
-        "terminal.integrated.profiles.linux" = {
-          "zsh" = {
-            path = "${pkgs.zsh}/bin/zsh";
-            args = ["-l"];
-            icon = "vm";
-          };
-        };
-        "terminal.integrated.cwd" = config.home.homeDirectory;
 
         "git.autofetch" = true;
         "git.confirmSync" = false;
         "git.enableSmartCommit" = true;
+        "git.alwaysSignOff" = true;
+        "git.autoStash" = true;
+        "git.enableCommitSigning" = true;
+        "git.ignoreSubmodules" = true;
+        "git.rebaseWhenSync" = true;
+        "github.gitProtocol" = "ssh";
 
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nixd";

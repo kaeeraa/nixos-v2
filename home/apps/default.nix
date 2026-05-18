@@ -10,5 +10,6 @@
     ./lutris.nix
     ./alacritty.nix
     ./git.nix
+    ./ssh.nix
   ];
 }
