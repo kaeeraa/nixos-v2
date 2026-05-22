@@ -11,5 +11,6 @@
     ./alacritty.nix
     ./git.nix
     ./ssh.nix
+    ./yazi.nix
   ];
 }
