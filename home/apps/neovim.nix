@@ -26,14 +26,16 @@
       hlsearch = true;
 
       number = true;
-      relativenumber = true;
+      relativenumber = false;
       cursorline = true;
       termguicolors = true;
       background = "dark";
       mouse = "a";
       clipboard = "unnamedplus";
 
-      updatetime = 300;
+      updatetime = 200;
+      timeoutlen = 400;
+
       swapfile = false;
       backup = false;
       writebackup = false;
@@ -41,6 +43,17 @@
       linebreak = true;
       breakindent = true;
       wrap = false;
+
+      signcolumn = "yes";
+      splitbelow = true;
+      splitright = true;
+      scrolloff = 8;
+      sidescrolloff = 8;
+
+      completeopt = ["menu" "menuone" "noselect"];
+      pumheight = 12;
+      conceallevel = 2;
+      concealcursor = "nc";
     };
 
     colorschemes.gruvbox = {
@@ -61,137 +74,208 @@
         mode = "n";
         key = "<leader>w";
         action = ":w<CR>";
-        options.desc = "Save";
+        options.desc = "save";
       }
       {
         mode = "n";
         key = "<leader>q";
         action = ":q<CR>";
-        options.desc = "Quit";
+        options.desc = "quit";
       }
       {
         mode = "n";
         key = "<leader>x";
         action = ":wq<CR>";
-        options.desc = "Save & Quit";
+        options.desc = "save and quit";
+      }
+
+      {
+        mode = "n";
+        key = "<leader>e";
+        action = "<cmd>NvimTreeToggle<CR>";
+        options.desc = "file explorer";
       }
 
       {
         mode = "n";
         key = "<leader>h";
         action = ":bprevious<CR>";
-        options.desc = "Prev buffer";
+        options.desc = "prev buffer";
       }
       {
         mode = "n";
         key = "<leader>l";
         action = ":bnext<CR>";
-        options.desc = "Next buffer";
+        options.desc = "next buffer";
       }
       {
         mode = "n";
         key = "<leader>b";
         action = ":buffers<CR>";
-        options.desc = "List buffers";
+        options.desc = "list buffers";
       }
 
       {
         mode = "n";
         key = "<C-h>";
         action = "<C-w>h";
-        options.desc = "Window left";
+        options.desc = "window left";
       }
       {
         mode = "n";
         key = "<C-j>";
         action = "<C-w>j";
-        options.desc = "Window down";
+        options.desc = "window down";
       }
       {
         mode = "n";
         key = "<C-k>";
         action = "<C-w>k";
-        options.desc = "Window up";
+        options.desc = "window up";
       }
       {
         mode = "n";
         key = "<C-l>";
         action = "<C-w>l";
-        options.desc = "Window right";
+        options.desc = "window right";
       }
 
       {
         mode = "n";
         key = "<leader>ff";
         action = "<cmd>Telescope find_files<CR>";
-        options.desc = "Find files";
+        options.desc = "find files";
       }
       {
         mode = "n";
         key = "<leader>fg";
         action = "<cmd>Telescope live_grep<CR>";
-        options.desc = "Live grep";
+        options.desc = "live grep";
       }
       {
         mode = "n";
         key = "<leader>fb";
         action = "<cmd>Telescope buffers<CR>";
-        options.desc = "Find buffers";
+        options.desc = "find buffers";
       }
       {
         mode = "n";
         key = "<leader>fh";
         action = "<cmd>Telescope help_tags<CR>";
-        options.desc = "Find help";
+        options.desc = "help tags";
+      }
+      {
+        mode = "n";
+        key = "<leader>fr";
+        action = "<cmd>Telescope oldfiles<CR>";
+        options.desc = "recent files";
+      }
+      {
+        mode = "n";
+        key = "<leader>fu";
+        action = "<cmd>Telescope undo<CR>";
+        options.desc = "undo tree";
+      }
+      {
+        mode = "n";
+        key = "<leader>f/";
+        action = "<cmd>Telescope current_buffer_fuzzy_find<CR>";
+        options.desc = "search in buffer";
       }
 
       {
         mode = "n";
         key = "gd";
         action = "<cmd>lua vim.lsp.buf.definition()<CR>";
-        options.desc = "Go to definition";
+        options.desc = "go to definition";
       }
       {
         mode = "n";
         key = "gr";
         action = "<cmd>lua vim.lsp.buf.references()<CR>";
-        options.desc = "References";
+        options.desc = "references";
+      }
+      {
+        mode = "n";
+        key = "gi";
+        action = "<cmd>lua vim.lsp.buf.implementation()<CR>";
+        options.desc = "implementation";
       }
       {
         mode = "n";
         key = "K";
         action = "<cmd>lua vim.lsp.buf.hover()<CR>";
-        options.desc = "Hover docs";
+        options.desc = "hover docs";
       }
       {
         mode = "n";
         key = "<leader>ca";
         action = "<cmd>lua vim.lsp.buf.code_action()<CR>";
-        options.desc = "Code action";
+        options.desc = "code action";
+      }
+      {
+        mode = "n";
+        key = "<leader>rn";
+        action = "<cmd>lua vim.lsp.buf.rename()<CR>";
+        options.desc = "rename symbol";
+      }
+      {
+        mode = "n";
+        key = "<leader>d";
+        action = "<cmd>lua vim.diagnostic.open_float()<CR>";
+        options.desc = "line diagnostics";
+      }
+      {
+        mode = "n";
+        key = "[d";
+        action = "<cmd>lua vim.diagnostic.goto_prev()<CR>";
+        options.desc = "prev diagnostic";
+      }
+      {
+        mode = "n";
+        key = "]d";
+        action = "<cmd>lua vim.diagnostic.goto_next()<CR>";
+        options.desc = "next diagnostic";
+      }
+      {
+        mode = "n";
+        key = "<leader>qf";
+        action = "<cmd>Trouble diagnostics toggle<CR>";
+        options.desc = "diagnostics panel";
       }
 
       {
         mode = "n";
         key = "gcc";
         action = "<Plug>(comment_toggle_linewise_current)";
-        options.desc = "Comment line";
+        options.desc = "comment line";
       }
       {
         mode = "x";
         key = "gc";
         action = "<Plug>(comment_toggle_linewise_visual)";
-        options.desc = "Comment selection";
+        options.desc = "comment selection";
       }
     ];
 
     plugins = {
       lualine.enable = true;
       web-devicons.enable = true;
+      bufferline.enable = true;
+      nvim-tree.enable = true;
+      which-key.enable = true;
+      todo-comments.enable = true;
+      indent-blankline.enable = true;
+      gitsigns.enable = true;
+      comment.enable = true;
+      nvim-autopairs.enable = true;
+      trouble.enable = true;
 
       telescope = {
         enable = true;
         extensions = {
           undo.enable = true;
+          fzf-native.enable = true;
         };
       };
 
@@ -202,17 +286,25 @@
           lua
           python
           javascript
+          typescript
+          c
+          cpp
           bash
           markdown
           json
           yaml
           toml
           gitignore
+          cmake
+          make
+          query
+          regex
         ];
       };
 
       lsp = {
         enable = true;
+
         servers = {
           nixd.enable = true;
           lua_ls.enable = true;
@@ -221,15 +313,10 @@
           jsonls.enable = true;
           yamlls.enable = true;
           marksman.enable = true;
+          clangd.enable = true;
         };
-        keymaps = {
-          silent = true;
-          diagnostic = {
-            "<leader>e" = "vim.diagnostic.open_float";
-            "[d" = "vim.diagnostic.goto_prev";
-            "]d" = "vim.diagnostic.goto_next";
-          };
-        };
+
+        inlayHints = true;
       };
 
       cmp = {
@@ -250,19 +337,72 @@
             {name = "buffer";}
             {name = "path";}
           ];
+          formatting = {
+            fields = ["abbr" "kind" "menu"];
+          };
+          window = {
+            completion = {
+              border = "rounded";
+            };
+            documentation = {
+              border = "rounded";
+            };
+          };
         };
       };
 
       luasnip.enable = true;
-
-      comment.enable = true;
-      gitsigns.enable = true;
-      which-key.enable = true;
-      todo-comments.enable = true;
       friendly-snippets.enable = true;
 
-      indent-blankline.enable = true;
+      conform-nvim = {
+        enable = true;
+        formatOnSave = true;
+        settings = {
+          formattersByFt = {
+            nix = ["nixfmt"];
+            lua = ["stylua"];
+            python = ["black"];
+            javascript = ["prettierd"];
+            typescript = ["prettierd"];
+            json = ["prettierd"];
+            yaml = ["prettierd"];
+            markdown = ["prettierd"];
+            sh = ["shfmt"];
+            c = ["clang-format"];
+            cpp = ["clang-format"];
+            cmake = ["cmake-format"];
+          };
+        };
+      };
     };
+
+    extraConfigLua = ''
+      vim.diagnostic.config({
+        virtual_text = true,
+        signs = true,
+        underline = true,
+        update_in_insert = false,
+        severity_sort = true,
+        float = {
+          border = "rounded",
+          source = "if_many",
+        },
+      })
+
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(event)
+          local keymap = vim.keymap.set
+
+          keymap("n", "gd", vim.lsp.buf.definition, { buffer = event.buf, silent = true })
+          keymap("n", "gr", vim.lsp.buf.references, { buffer = event.buf, silent = true })
+          keymap("n", "gi", vim.lsp.buf.implementation, { buffer = event.buf, silent = true })
+          keymap("n", "K", vim.lsp.buf.hover, { buffer = event.buf, silent = true })
+          keymap("n", "<leader>rn", vim.lsp.buf.rename, { buffer = event.buf, silent = true })
+          keymap("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = event.buf, silent = true })
+          keymap("n", "<leader>d", vim.diagnostic.open_float, { buffer = event.buf, silent = true })
+        end,
+      })
+    '';
 
     extraPackages = with pkgs; [
       nixd
@@ -270,15 +410,19 @@
       pyright
       bash-language-server
       vscode-langservers-extracted
+      clang-tools
+      cmake-language-server
 
       nixfmt-rfc-style
       stylua
       black
       prettierd
+      shfmt
+      clang-tools
+      cmake-format
 
       ripgrep
       fd
-
       git
     ];
   };
