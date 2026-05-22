@@ -25,13 +25,12 @@
     freesmlauncher.packages.${system}.default
 
     yandex-music
-    (pkgs.writeShellScriptBin "muffon" ''
-    exec ${pkgs.muffon}/bin/muffon --ozone-platform=x11 "$@"
-  '') 
-
-    nixd
 
     nerd-fonts.iosevka
+
+    libqalculate
+
+    nixd
   ];
 
   home.sessionVariables = {

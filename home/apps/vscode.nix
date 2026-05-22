@@ -1,6 +1,5 @@
 {
   lib,
-  config,
   pkgs,
   ...
 }: {
@@ -12,14 +11,14 @@
       extensions = with pkgs.vscode-extensions; [
         jdinhlife.gruvbox
         pkief.material-icon-theme
-      
+
         jnoortheen.nix-ide
         sumneko.lua
         ms-python.python
         ms-python.vscode-pylance
         mads-hartmann.bash-ide-vscode
         esbenp.prettier-vscode
-      
+
         editorconfig.editorconfig
         foxundermoon.shell-format
         mkhl.direnv
@@ -112,6 +111,10 @@
         "[nix]"."editor.defaultFormatter" = "kamadorueda.alejandra";
         "[env]"."editor.defaultFormatter" = "foxundermoon.shell-format";
         "[python]"."editor.defaultFormatter" = "charliermarsh.ruff";
+        "[toml]"."editor.defaultFormatter" = "tamasfe.even-better-toml";
+        "[shellscript]"."editor.defaultFormatter" = "foxundermoon.shell-format";
+        "[gitignore]"."editor.defaultFormatter" = "foxundermoon.shell-format";
+        "[rust]"."editor.defaultFormatter" =  "rust-lang.rust-analyzer";
       };
       keybindings = [
         {
