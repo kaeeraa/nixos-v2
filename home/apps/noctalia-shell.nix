@@ -1,7 +1,6 @@
 {
-  config,
-  lib,
   pkgs,
+  config,
   noctalia,
   ...
 }: {
@@ -123,6 +122,19 @@
 
       nightLight.enabled = true;
     };
+  };
+  systemd.user.services.lockBeforeSleep = {
+    Unit = {
+      Description = "lock noctalia before sleep";
+      Before = ["sleep.target"];
+    };
+
+    Service = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.quickshell}/bin/qs -c noctalia-shell ipc call lockScreen lock";
+    };
+
+    Install.WantedBy = ["sleep.target"];
   };
 
   home.packages = with pkgs; [

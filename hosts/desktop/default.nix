@@ -35,9 +35,13 @@
     };
   };
 
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="pci", DRIVER=="pcieport", ATTR{power/wakeup}="disabled"
+    ACTION=="add", SUBSYSTEM=="usb", TEST=="power/wakeup", ATTR{power/wakeup}="disabled"
+  '';
   services.logind.settings.Login = {
-    HandlePowerKey = "hibernate";
-    HandleSuspendKey = "hibernate";
-    HandleHibernateKey = "hibernate";
+    HandlePowerKey = "suspend";
+    HandleSuspendKey = "suspend";
+    HandleHibernateKey = "suspend";
   };
 }
