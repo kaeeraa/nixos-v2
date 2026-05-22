@@ -8,4 +8,5 @@
       item = "core"; # The soft/hard limit item
       value = "0"; # Core dumps size is limited to 0 (effectively disabled)
     }
-  ];}
+  ];
+}
