@@ -114,7 +114,7 @@
         "[toml]"."editor.defaultFormatter" = "tamasfe.even-better-toml";
         "[shellscript]"."editor.defaultFormatter" = "foxundermoon.shell-format";
         "[gitignore]"."editor.defaultFormatter" = "foxundermoon.shell-format";
-        "[rust]"."editor.defaultFormatter" =  "rust-lang.rust-analyzer";
+        "[rust]"."editor.defaultFormatter" = "rust-lang.rust-analyzer";
       };
       keybindings = [
         {

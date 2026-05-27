@@ -1,6 +1,8 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    freesmlauncher.url = "github:kaeeraa/FreesmLauncher";
+    nixvim.url = "github:nix-community/nixvim";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,10 +17,6 @@
     };
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixvim = {
-      url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
@@ -45,11 +43,6 @@
     ayugram-desktop = {
       url = "github:ndfined-crp/ayugram-desktop";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    freesmlauncher = {
-      url = "github:kaeeraa/FreesmLauncher";
-      # broken with last unstable
-      #inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 

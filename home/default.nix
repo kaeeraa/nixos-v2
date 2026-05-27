@@ -25,10 +25,12 @@
     freesmlauncher.packages.${system}.default
 
     yandex-music
+    kicad
 
     nerd-fonts.iosevka
 
     libqalculate
+    codex
 
     nixd
   ];
