@@ -47,6 +47,12 @@
         identitiesOnly = true;
         include = "~/.ssh/pterodactyl_bn-hostname";
       };
+      hostiq-uni = {
+        user = "root";
+        identityFile = "~/.ssh/hostiq-uni.ed25519";
+        identitiesOnly = true;
+        include = "~/.ssh/hostiq-uni-hostname";
+      };
     };
   };
 }

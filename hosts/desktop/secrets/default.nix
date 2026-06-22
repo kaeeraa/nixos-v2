@@ -25,6 +25,7 @@ in {
       poland1_bn = mkUserKeySecret "poland1_bn.ed25519";
       poland2_bn = mkUserKeySecret "poland2_bn.ed25519";
       pterodactyl_bn = mkUserKeySecret "pterodactyl_bn.ed25519";
+      hostiq-uni = mkUserKeySecret "hostiq-uni.ed25519";
     };
   };
 }

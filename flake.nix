@@ -24,6 +24,11 @@
     millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest";
+
+    pterodactyl = {
+      url = "git+https://codeberg.org/Poellebob/pterodactyl-flake.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -43,6 +48,7 @@
     nix-flatpak,
     zapret-discord-youtube,
     millennium,
+    pterodactyl,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -72,6 +78,17 @@
             extraSpecialArgs = {inherit inputs system settings;};
           };
         }
+      ];
+    };
+    nixosConfigurations.hostiq-uni = nixpkgs.lib.nixosSystem {
+      inherit system;
+
+      modules = [
+        inputs.sops-nix.nixosModules.sops
+        inputs.disko.nixosModules.disko
+        pterodactyl.nixosModules.pterodactyl
+
+        ./hosts/hostiq-uni
       ];
     };
   };
