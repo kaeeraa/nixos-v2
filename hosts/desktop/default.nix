@@ -15,7 +15,7 @@
     ./disko.nix
     ./cpu.nix
     ./virtualisation.nix
-
+    ./secrets
     ./apps
     ./services
   ];

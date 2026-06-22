@@ -63,7 +63,6 @@
         inputs.zapret-discord-youtube.nixosModules.withTestTools
 
         ./custom
-        ./secrets
         ./hosts/desktop/default.nix
         {
           home-manager = {
