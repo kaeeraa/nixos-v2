@@ -1,4 +1,9 @@
 {...}: {
+  security.sudo.enable = false;
+  security.run0 = {
+    wheelNeedsPassword = false;
+    enableSudoAlias = true;
+  };
   systemd.coredump.enable = false;
   # ➡️ Sets the kernel's resource limit (ulimit -c 0)
   security.pam.loginLimits = [

@@ -31,19 +31,29 @@
         christian-kohler.path-intellisense
         yzhang.markdown-all-in-one
         ms-vscode.cmake-tools
+        ms-vscode.cpptools
+        platformio.platformio-vscode-ide
+        ms-vscode.remote-explorer
+        ms-vscode-remote.remote-ssh
+        ms-vscode-remote.remote-ssh-edit
+
+        llvm-vs-code-extensions.vscode-clangd
+        ms-vscode.cpptools-extension-pack
+        github.vscode-github-actions
+        nefrob.vscode-just-syntax
       ];
 
       userSettings = {
-        "window.zoomLevel" = 1;
+        "window.zoomLevel" = 0;
         "workbench.colorTheme" = "Gruvbox Dark Hard";
         "workbench.iconTheme" = "material-icon-theme";
         "workbench.startupEditor" = "none";
         "window.titleBarStyle" = "custom";
         "window.commandCenter" = false;
 
-        "editor.fontFamily" = "Iosevka NFM";
-        "editor.fontSize" = lib.mkForce 18;
-        "editor.lineHeight" = 1.6;
+        "editor.fontFamily" = "Maple Mono Normal NF";
+        "editor.fontSize" = lib.mkForce 16;
+        "editor.lineHeight" = 1.2;
         "editor.fontWeight" = 500;
         "editor.fontLigatures" = true;
         "editor.tabSize" = 2;
@@ -51,14 +61,32 @@
         "editor.formatOnSave" = true;
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
         "editor.minimap.enabled" = true;
-        "editor.wordWrap" = "on";
-        "files.autoSave" = "onFocusChange";
-        "editor.cursorBlinking" = "smooth";
+        "editor.wordWrap" = "bounded";
+        "editor.wrapOnEscapedLineFeeds" = true;
+        "editor.wrappingStrategy" = "advanced";
+        "editor.wordWrapColumn" = 140;
+        "files.autoSave" = "afterDelay";
+        "files.autoSaveDelay" = 500;
+        "editor.cursorBlinking" = "phase";
         "editor.cursorSmoothCaretAnimation" = "on";
         "editor.accessibilitySupport" = "off";
         "editor.renderWhitespace" = "selection";
         "editor.suggest.preview" = true;
         "editor.minimap.autohide" = "mouseover";
+        "editor.smoothScrolling" = true;
+        "terminal.integrated.smoothScrolling" = true;
+
+        "cmake.configureOnOpen" = true;
+        "cmake.buildDirectory" = "\${workspaceFolder}/build";
+        "cmake.generator" = "Ninja";
+        "cmake.exportCompileCommandsFile" = true;
+        "clangd.arguments" = [
+          "--compile-commands-dir=build"
+          "--background-index"
+          "--clang-tidy"
+          "--completion-style=detailed"
+        ];
+        "C_Cpp.intelliSenseEngine" = "disabled";
 
         "chat.disableAIFeatures" = true;
 
@@ -115,6 +143,9 @@
         "[shellscript]"."editor.defaultFormatter" = "foxundermoon.shell-format";
         "[gitignore]"."editor.defaultFormatter" = "foxundermoon.shell-format";
         "[rust]"."editor.defaultFormatter" = "rust-lang.rust-analyzer";
+        "[cpp]"."editor.defaultFormatter" = "llvm-vs-code-extensions.vscode-clangd";
+        "[ignore]"."editor.defaultFormatter" = "foxundermoon.shell-format";
+        "[just]"."editor.defaultFormatter" = "nefrob.vscode-just-syntax";
       };
       keybindings = [
         {
@@ -198,4 +229,15 @@
       enableExtensionUpdateCheck = false;
     };
   };
+  home.packages = with pkgs; [
+    platformio
+    avrdude
+    cmake
+    ninja
+    gdb
+    clang
+    llvmPackages.clang-tools
+    just-lsp
+    just-formatter
+  ];
 }

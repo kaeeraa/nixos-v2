@@ -1,3 +1,7 @@
 {...}: {
-  imports = [./usbguard.nix];
+  imports = [
+    ./usbguard.nix
+    ./zapret.nix
+    ./sunshine.nix
+  ];
 }

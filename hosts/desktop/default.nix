@@ -13,6 +13,8 @@
     ./tpm.nix
     ./hardening.nix
     ./disko.nix
+    ./cpu.nix
+    ./virtualisation.nix
 
     ./apps
     ./services
@@ -29,9 +31,9 @@
     enable = true;
     cache32Bit = true;
     defaultFonts = {
-      serif = ["Iosevka NF"];
-      sansSerif = ["Iosevka NF"];
-      monospace = ["Iosevka NF Mono"];
+      serif = ["Inter"];
+      sansSerif = ["Inter"];
+      monospace = ["Maple Mono Normal NF"];
     };
   };
 
@@ -39,9 +41,21 @@
     ACTION=="add", SUBSYSTEM=="pci", DRIVER=="pcieport", ATTR{power/wakeup}="disabled"
     ACTION=="add", SUBSYSTEM=="usb", TEST=="power/wakeup", ATTR{power/wakeup}="disabled"
   '';
+  services.udev.packages = with pkgs; [
+    platformio-core.udev
+    openocd
+  ];
   services.logind.settings.Login = {
     HandlePowerKey = "suspend";
     HandleSuspendKey = "suspend";
     HandleHibernateKey = "suspend";
+  };
+  systemd.sleep.settings.Sleep = {
+    suspendState = "mem";
+  };
+  services.flatpak.enable = true;
+  services.input-remapper = {
+    enable = true;
+    enableUdevRules = true;
   };
 }

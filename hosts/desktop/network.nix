@@ -1,31 +1,55 @@
-{lib, ...}: {
+{...}: {
   networking = {
-    networkmanager.enable = true;
-    #useNetworkd = true;
-    #usePredictableInterfaceNames = lib.mkDefault true;
+    networkmanager.enable = false;
+    useNetworkd = true;
+    useDHCP = false;
 
-    #defaultGateway = {
-    #  address = "192.168.1.1";
-    #  interface = "enp11s0";
-    #};
-    #interfaces.enp11s0 = {
-    #  useDHCP = false;
-    #  ipv4.addresses = [
-    #    {
-    #      address = "192.168.1.2";
-    #      prefixLength = 24;
-    #    }
-    #  ];
-    #  ipv4.routes = [
-    #    { address = "0.0.0.0"; via = "192.168.1.1"; prefixLength = 24; }
-    #  ];
-    #};
+    nameservers = [
+      "192.168.1.1"
+      "::1"
+      "9.9.9.9"
+      "9.9.9.11"
+      "2620:fe::fe"
+      "2620:fe::9"
+    ];
 
-    nameservers = ["192.168.1.1" "9.9.9.11" "9.9.9.9"];
+    interfaces.enp11s0 = {
+      wakeOnLan.enable = true;
+
+      ipv4.addresses = [
+        {
+          address = "192.168.1.2";
+          prefixLength = 24;
+        }
+      ];
+
+      ipv4.routes = [
+        {
+          address = "0.0.0.0";
+          prefixLength = 0;
+          via = "192.168.1.1";
+        }
+      ];
+
+      ipv6 = {
+        addresses = [
+          {
+            address = "2a02:2698:7c2b:4cbe::2";
+            prefixLength = 64;
+          }
+        ];
+      };
+    };
+
+    defaultGateway = {
+      address = "192.168.1.1";
+      interface = "enp11s0";
+    };
 
     firewall = {
       enable = true;
       allowedTCPPorts = [130];
+      allowedUDPPorts = [9];
       allowedUDPPortRanges = [
         {
           from = 50000;

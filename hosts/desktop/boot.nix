@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  config,
   ...
 }: {
   environment.systemPackages = [pkgs.sbctl];
@@ -124,7 +123,6 @@
       "loglevel=3"
       "usbcore.autosuspend=-1"
       "nvidia-drm.modeset=1"
-      "nvidia.NVreg_TemporaryFilePath=/var/tmp"
       # make it harder to influence slab cache layout
       "slab_nomerge"
       # enables zeroing of memory during allocation and free time
@@ -180,7 +178,7 @@
       # should be enabled along with bpf above
       # "net.core.bpf_jit_harden" = 2;
       # restrict loading TTY line disciplines to the CAP_SYS_MODULE
-      "dev.tty.ldisk_autoload" = 0;
+      "dev.tty.ldisc_autoload" = 0;
       # prevent exploit of use-after-free flaws
       "vm.unprivileged_userfaultfd" = 0;
       # kexec is used to boot another kernel during runtime and can be abused
@@ -215,20 +213,6 @@
       "net.ipv4.conf.all.send_redirects" = 0;
       "net.ipv4.conf.default.send_redirects" = 0;
 
-      # prevent man-in-the-middle attacks
-      "net.ipv4.icmp_echo_ignore_all" = 1;
-
-      # ignore ICMP request, helps avoid Smurf attacks
-      "net.ipv4.conf.all.forwarding" = 0;
-      "net.ipv4.conf.default.accept_source_route" = 0;
-      "net.ipv4.conf.all.accept_source_route" = 0;
-      "net.ipv6.conf.all.accept_source_route" = 0;
-      "net.ipv6.conf.default.accept_source_route" = 0;
-      # Reverse path filtering causes the kernel to do source validation of
-      "net.ipv6.conf.all.forwarding" = 0;
-      "net.ipv6.conf.all.accept_ra" = 0;
-      "net.ipv6.conf.default.accept_ra" = 0;
-
       ## TCP hardening
       # Prevent bogus ICMP errors from filling up logs.
       "net.ipv4.icmp_ignore_bogus_error_responses" = 1;
@@ -250,8 +234,6 @@
 
       # Randomize memory
       "kernel.randomize_va_space" = 2;
-      # Exec Shield (Stack protection)
-      "kernel.exec-shield" = 1;
 
       ## TCP optimization
       # TCP Fast Open is a TCP extension that reduces network latency by packing
@@ -261,6 +243,8 @@
       # Bufferbloat mitigations + slight improvement in throughput & latency
       "net.ipv4.tcp_congestion_control" = "bbr";
       "net.core.default_qdisc" = "cake";
+
+      "net.ipv4.icmp_echo_ignore_all" = 0;
     };
   };
 

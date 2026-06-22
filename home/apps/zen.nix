@@ -1,15 +1,14 @@
 {
-  zen-browser,
-  firefox-addons,
+  inputs,
   system,
   ...
 }: {
   imports = [
-    zen-browser.homeModules.default
+    inputs.zen-browser.homeModules.default
   ];
   programs.zen-browser = {
     enable = true;
-    package = zen-browser.packages.${system}.default;
+    package = inputs.zen-browser.packages.${system}.default;
 
     policies = {
       DisableTelemetry = true;
@@ -34,12 +33,14 @@
         "zen.workspaces.enabled" = true;
 
         "browser.sessionstore.resume_from_crash" = true;
-        "browser.cache.disk.enable" = true;
+        "browser.cache.disk.enable" = false;
         "browser.cache.memory.enable" = true;
 
         "privacy.trackingprotection.enabled" = true;
         "privacy.resistFingerprinting" = false;
         "privacy.firstparty.isolate" = true;
+
+        "sine.engine.auto-update" = false;
 
         "browser.search.defaultenginename" = "DuckDuckGo";
         "browser.urlbar.defaultenginename" = "DuckDuckGo";
@@ -50,8 +51,12 @@
       id = 0;
       name = "kaeeraa";
       isDefault = true;
+      sine = {
+        enable = true;
+        mods = ["Nebula"];
+      };
 
-      extensions.packages = with firefox-addons.packages.${system}; [
+      extensions.packages = with inputs.firefox-addons.packages.${system}; [
         ublock-origin
         bitwarden
         darkreader

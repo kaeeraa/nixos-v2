@@ -1,3 +1,3 @@
 {...}: {
-  imports = [./throne.nix ./steam.nix];
+  imports = [./throne.nix ./steam.nix ./noctalia-greeter.nix];
 }

@@ -25,7 +25,7 @@ deleteSubvolumeTree() {
       sort -r
   )
 
-  for nestedSubvolume in "''${nestedSubvolumes[@]}"; do
+  for nestedSubvolume in "${nestedSubvolumes[@]}"; do
     btrfs subvolume delete "$mountPoint/$nestedSubvolume"
   done
 

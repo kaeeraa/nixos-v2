@@ -1,16 +1,12 @@
-{...}: {
+{pkgs, ...}: {
   environment.persistence."/persist" = {
     hideMounts = true;
     directories = [
       "/etc/nixos"
-      "/var/log"
       "/var/lib/nixos"
       "/var/lib/bluetooth"
       "/var/lib/sops-nix"
-      {
-        directory = "/var/log/journal";
-        mode = "0755";
-      }
+      "/var/log/journal"
     ];
 
     files = [
@@ -27,11 +23,14 @@
         "Videos"
         "Projects"
         "Games"
+        "Scripts"
         ".ssh"
         ".gnupg"
         ".local/share"
         ".steam"
         ".config"
+        ".cache/noctalia"
+        ".local/state/noctalia"
       ];
       files = [
         ".zsh_history"
@@ -44,6 +43,11 @@
     wantedBy = ["initrd.target"];
     after = ["systemd-cryptsetup@cryptroot.service" "resume.target"];
     before = ["sysroot.mount"];
+
+    path = with pkgs; [
+      busybox
+      btrfs-progs
+    ];
 
     unitConfig.DefaultDependencies = false;
     serviceConfig.Type = "oneshot";

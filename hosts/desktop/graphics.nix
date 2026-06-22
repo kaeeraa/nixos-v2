@@ -12,13 +12,6 @@
 
     open = false;
     package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
-
-    prime = {
-      sync.enable = true;
-
-      amdgpuBusId = "PCI:15:0:0";
-      nvidiaBusId = "PCI:01:0:0";
-    };
   };
 
   environment.variables = {

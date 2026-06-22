@@ -1,7 +1,8 @@
-{...}: {
+{pkgs, ...}: {
   programs.steam = {
     enable = true;
-    extest.enable = true;
+    package = pkgs.millennium-steam;
+
     gamescopeSession.enable = true;
     protontricks.enable = true;
   };

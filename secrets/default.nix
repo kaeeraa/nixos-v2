@@ -1,6 +1,6 @@
 {pkgs, ...}: let
   keyFile = "/var/lib/sops-nix/age.key";
-  mkUserKey = name: {
+  mkUserKeySecret = name: {
     path = "/home/kaeeraa/.ssh/${name}";
     owner = "kaeeraa";
     mode = "0600";
@@ -17,10 +17,14 @@ in {
     };
 
     secrets = {
-      github = mkUserKey "github.ed25519";
-      git-signing = mkUserKey "git-signing.ed25519";
-      alpha-vds = mkUserKey "alpha-vds.ed25519";
-      router = mkUserKey "router";
+      github = mkUserKeySecret "github.ed25519";
+      git-signing = mkUserKeySecret "git-signing.ed25519";
+      alpha-vds = mkUserKeySecret "alpha-vds.ed25519";
+      router = mkUserKeySecret "router.ed25519";
+      belarus_bn = mkUserKeySecret "belarus_bn.ed25519";
+      poland1_bn = mkUserKeySecret "poland1_bn.ed25519";
+      poland2_bn = mkUserKeySecret "poland2_bn.ed25519";
+      pterodactyl_bn = mkUserKeySecret "pterodactyl_bn.ed25519";
     };
   };
 }

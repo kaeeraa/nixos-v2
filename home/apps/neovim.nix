@@ -1,9 +1,9 @@
 {
   pkgs,
-  nixvim,
+  inputs,
   ...
 }: {
-  imports = [nixvim.homeModules.nixvim];
+  imports = [inputs.nixvim.homeModules.nixvim];
 
   programs.nixvim = {
     enable = true;
@@ -356,7 +356,6 @@
 
       conform-nvim = {
         enable = true;
-        formatOnSave = true;
         settings = {
           formattersByFt = {
             nix = ["nixfmt"];
@@ -413,7 +412,6 @@
       clang-tools
       cmake-language-server
 
-      nixfmt-rfc-style
       stylua
       black
       prettierd

@@ -18,6 +18,8 @@
     historySubstringSearch.enable = true;
 
     initContent = lib.mkBefore ''
+      bindkey "^[[1;5C" forward-word
+      bindkey "^[[1;5D" backward-word
       setopt interactive_comments
     '';
   };

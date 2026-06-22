@@ -12,5 +12,7 @@
     ./git.nix
     ./ssh.nix
     ./yazi.nix
+    ./tmux.nix
+    ./vesktop.nix
   ];
 }
